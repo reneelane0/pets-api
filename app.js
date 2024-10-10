@@ -40,37 +40,64 @@ const resizeAllImages = (folderPath, width, height) => {
 // Resize all images in the "public/images" folder to 300x300 pixels
 resizeAllImages(imageFolderPath, 300, 300);
 
-// Array of pet names
-const names = [
-    "Buddy", "Max", "Charlie", "Bella", "Lucy", "Daisy",
-    "Bailey", "Molly", "Rocky", "Sadie", "Coco", "Zoe",
-    "Lola", "Teddy", "Leo", "Oliver", "Simba", "Gizmo",
-    "Chester", "Cleo", "Nala", "Penny", "Shadow", "Rusty"
+// Array of pet names categorized by gender
+const boyNames = [
+    "Max", "Charlie", "Buddy", "Rocky", "Oliver", "Leo", "Teddy", "Chester", "Tobias", "Rusty"
+];
+
+const girlNames = [
+    "Bella", "Lucy", "Daisy", "Molly", "Sadie", "Violet", "Zoe", "Lola", "Hazel", "Penny", "Vivienne"
+];
+
+const genderNeutralNames = [
+    "Sam", "Taylor", "Jordan", "Charlie", "Casey", "Alex", "Skylar", "Jamie", "Michael", "Bailey"
 ];
 
 // Function to generate random pet data
 const getRandomPet = (id) => {
     const dogBreeds = [
-        { breed: "Golden Retriever", adultImages: ["golden_retriever_adult_1.jpg", "golden_retriever_adult_2.jpg", "golden_retriever_adult_3.jpg"], puppyImages: ["golden_retriever_puppy_1.jpg", "golden_retriever_puppy_2.jpg", "golden_retriever_puppy_3.jpg"] },
-        { breed: "Labrador", adultImages: ["labrador_adult_1.jpg", "labrador_adult_2.jpg", "labrador_adult_3.jpg"], puppyImages: ["labrador_puppy_1.jpg", "labrador_puppy_2.jpg", "labrador_puppy_3.jpg"] },
-        { breed: "Bulldog", adultImages: ["bulldog_adult_1.jpg", "bulldog_adult_2.jpg", "bulldog_adult_3.jpg"], puppyImages: ["bulldog_puppy_1.jpg", "bulldog_puppy_2.jpg", "bulldog_puppy_3.jpg"] },
-        { breed: "Beagle", adultImages: ["beagle_adult_1.jpg", "beagle_adult_2.jpg", "beagle_adult_3.jpg"], puppyImages: ["beagle_puppy_1.jpg", "beagle_puppy_2.jpg", "beagle_puppy_3.jpg"] },
-        { breed: "Boxer", adultImages: ["boxer_adult_1.jpg", "boxer_adult_2.jpg", "boxer_adult_3.jpg"], puppyImages: ["boxer_puppy_1.jpg", "boxer_puppy_2.jpg", "boxer_puppy_3.jpg"] },
-        { breed: "Husky", adultImages: ["husky_adult_1.jpg", "husky_adult_2.jpg", "husky_adult_3.jpg"], puppyImages: ["husky_puppy_1.jpg", "husky_puppy_2.jpg", "husky_puppy_3.jpg"] },
-        { breed: "Pitbull", adultImages: ["pitbull_adult_1.jpg", "pitbull_adult_2.jpg", "pitbull_adult_3.jpg"], puppyImages: ["pitbull_puppy_1.jpg", "pitbull_puppy_2.jpg", "pitbull_puppy_3.jpg"] },
-        { breed: "Mixed", adultImages: ["mixed_dog_adult_1.jpg", "mixed_dog_adult_2.jpg", "mixed_dog_adult_3.jpg"], puppyImages: ["mixed_dog_puppy_1.jpg", "mixed_dog_puppy_2.jpg", "mixed_dog_puppy_3.jpg"] }
+        { breed: "Golden Retriever", adultImages: ["golden_retriever_adult_1.jpg", "golden_retriever_adult_2.jpg", "golden_retriever_adult_3.jpg"],
+                                     puppyImages: ["golden_retriever_puppy_1.jpg", "golden_retriever_puppy_2.jpg", "golden_retriever_puppy_3.jpg"] },
+        { breed: "Labrador", adultImages: ["labrador_adult_1.jpg", "labrador_adult_2.jpg", "labrador_adult_3.jpg"],
+                             puppyImages: ["labrador_puppy_1.jpg", "labrador_puppy_2.jpg", "labrador_puppy_3.jpg"] },
+        { breed: "Bulldog", adultImages: ["bulldog_adult_1.jpg", "bulldog_adult_2.jpg", "bulldog_adult_3.jpg"],
+                            puppyImages: ["bulldog_puppy_1.jpg", "bulldog_puppy_2.jpg", "bulldog_puppy_3.jpg"] },
+        { breed: "Beagle", adultImages: ["beagle_adult_1.jpg", "beagle_adult_2.jpg", "beagle_adult_3.jpg"],
+                           puppyImages: ["beagle_puppy_1.jpg", "beagle_puppy_2.jpg", "beagle_puppy_3.jpg"] },
+        { breed: "Boxer", adultImages: ["boxer_adult_1.jpg", "boxer_adult_2.jpg", "boxer_adult_3.jpg"],
+                          puppyImages: ["boxer_puppy_1.jpg", "boxer_puppy_2.jpg", "boxer_puppy_3.jpg"] },
+        { breed: "Husky", adultImages: ["husky_adult_1.jpg", "husky_adult_2.jpg", "husky_adult_3.jpg"],
+                          puppyImages: ["husky_puppy_1.jpg", "husky_puppy_2.jpg", "husky_puppy_3.jpg"] },
+        { breed: "Pitbull", adultImages: ["pitbull_adult_1.jpg", "pitbull_adult_2.jpg", "pitbull_adult_3.jpg"],
+                            puppyImages: ["pitbull_puppy_1.jpg", "pitbull_puppy_2.jpg", "pitbull_puppy_3.jpg"] },
+        { breed: "Mixed", adultImages: ["mixed_dog_adult_1.jpg", "mixed_dog_adult_2.jpg", "mixed_dog_adult_3.jpg"],
+                          puppyImages: ["mixed_puppy_1.jpg", "mixed_puppy_2.jpg", "mixed_puppy_3.jpg"] }
     ];
     
     const catBreeds = [
-        { breed: "Tabby", adultImages: ["tabby_adult_1.jpg", "tabby_adult_2.jpg", "tabby_adult_3.jpg"], kittenImages: ["tabby_kitten_1.jpg", "tabby_kitten_2.jpg", "tabby_kitten_3.jpg"] },
-        { breed: "Calico", adultImages: ["calico_adult_1.jpg", "calico_adult_2.jpg", "calico_adult_3.jpg"], kittenImages: ["calico_kitten_1.jpg", "calico_kitten_2.jpg", "calico_kitten_3.jpg"] },
-        { breed: "Ginger", adultImages: ["ginger_adult_1.jpg", "ginger_adult_2.jpg", "ginger_adult_3.jpg"], kittenImages: ["ginger_kitten_1.jpg", "ginger_kitten_2.jpg", "ginger_kitten_3.jpg"] },
-        { breed: "Siamese", adultImages: ["siamese_adult_1.jpg", "siamese_adult_2.jpg", "siamese_adult_3.jpg"], kittenImages: ["siamese_kitten_1.jpg", "siamese_kitten_2.jpg", "siamese_kitten_3.jpg"] },
-        { breed: "Persian", adultImages: ["persian_adult_1.jpg", "persian_adult_2.jpg", "persian_adult_3.jpg"], kittenImages: ["persian_kitten_1.jpg", "persian_kitten_2.jpg", "persian_kitten_3.jpg"] },
-        { breed: "Mixed", adultImages: ["mixed_cat_adult_1.jpg", "mixed_cat_adult_2.jpg", "mixed_cat_adult_3.jpg"], kittenImages: ["mixed_cat_kitten_1.jpg", "mixed_cat_kitten_2.jpg", "mixed_cat_kitten_3.jpg"] }
+        { breed: "Tabby", adultImages: ["tabby_adult_1.jpg", "tabby_adult_2.jpg", "tabby_adult_3.jpg"],
+                          kittenImages: ["tabby_kitten_1.jpg", "tabby_kitten_2.jpg", "tabby_kitten_3.jpg"] },
+        { breed: "Calico", adultImages: ["calico_adult_1.jpg", "calico_adult_2.jpg", "calico_adult_3.jpg"],
+                           kittenImages: ["calico_kitten_1.jpg", "calico_kitten_2.jpg", "calico_kitten_3.jpg"] },
+        { breed: "Ginger", adultImages: ["ginger_adult_1.jpg", "ginger_adult_2.jpg", "ginger_adult_3.jpg"],
+                           kittenImages: ["ginger_kitten_1.jpg", "ginger_kitten_2.jpg", "ginger_kitten_3.jpg"] },
+        { breed: "Siamese", adultImages: ["siamese_adult_1.jpg", "siamese_adult_2.jpg", "siamese_adult_3.jpg"],
+                            kittenImages: ["siamese_kitten_1.jpg", "siamese_kitten_2.jpg", "siamese_kitten_3.jpg"] },
+        { breed: "Persian", adultImages: ["persian_adult_1.jpg", "persian_adult_2.jpg", "persian_adult_3.jpg"],
+                            kittenImages: ["persian_kitten_1.jpg", "persian_kitten_2.jpg", "persian_kitten_3.jpg"] },
+        { breed: "Mixed", adultImages: ["mixed_cat_adult_1.jpg", "mixed_cat_adult_2.jpg", "mixed_cat_adult_3.jpg"],
+                          kittenImages: ["mixed_kitten_1.jpg", "mixed_kitten_2.jpg", "mixed_kitten_3.jpg"] },
+        { breed: "Tuxedo", adultImages: ["tuxedo_adult_1.jpg", "tuxedo_adult_2.jpg", "tuxedo_adult_3.jpg"],
+                           kittenImages: ["tuxedo_kitten_1.jpg", "tuxedo_kitten_2.jpg", "tuxedo_kitten_3.jpg"] },
+        { breed: "Black", adultImages: ["black_cat_adult_1.jpg", "black_cat_adult_2.jpg", "black_cat_adult_3.jpg"],
+                          kittenImages: ["black_kitten_1.jpg", "black_kitten_2.jpg", "black_kitten_3.jpg"] }
     ];
 
-    const cities = ["Halifax", "Fredericton", "Charlottetown", "St. John", "Moncton"];
+    const cities = [
+        "Halifax", "Fredericton", "Charlottetown", "St. John", "Moncton", "Lunenburg", "Sydney", "Truro", "New Glasgow",
+        "Yarmouth", "Bridgewater", "Amherst", "Kentville", "Antigonish", "Wolfville", "Pictou", "Summersie", "Montague",
+        "Souris", "Stratford", "Dieppe", "Bathurst", "Edmundston", "Miramichi"
+    ];
     
     const descriptors = ["energetic", "shy", "outgoing", "friendly", "mellow", "active", "sweet", "loving", "anxious"];
     const dogActivities = ["squeaky toys", "playing fetch", "going on walks", "cuddling"];
@@ -102,13 +129,24 @@ const getRandomPet = (id) => {
         ? dogActivities[Math.floor(Math.random() * dogActivities.length)]
         : catActivities[Math.floor(Math.random() * catActivities.length)];
 
-    const description = `${names[Math.floor(Math.random() * names.length)]} is a lovely ${species} who is ${descriptor} and loves ${activity}.`;
+    // Determine the pet's sex and select a name accordingly
+    const isMale = Math.random() > 0.5;  // Randomly assign sex
+    const petName = isMale
+        ? boyNames[Math.floor(Math.random() * boyNames.length)] // Select from boy names
+        : girlNames[Math.floor(Math.random() * girlNames.length)]; // Select from girl names
+
+    // If you want to include gender-neutral names, randomly select between them
+    const useGenderNeutral = Math.random() > 0.5;  // Randomly decide whether to use gender-neutral names
+    const nameToUse = useGenderNeutral ? 
+        genderNeutralNames[Math.floor(Math.random() * genderNeutralNames.length)] : petName;
+
+    const description = `${nameToUse} is a lovely ${species} who is ${descriptor} and loves ${activity}.`;
 
     return {
         id,
-        name: names[Math.floor(Math.random() * names.length)],
+        name: nameToUse,
         species,
-        sex: Math.random() > 0.5 ? "male" : "female",
+        sex: isMale ? "male" : "female",
         breed: selectedBreed.breed,
         age,
         ageGroup,  // Either 'puppy/kitten' or 'adult'
